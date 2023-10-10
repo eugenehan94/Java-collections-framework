@@ -6,6 +6,10 @@ import java.util.Stack;
 import java.util.Iterator;
 import java.util.Comparator;
 import java.util.Stack;
+import java.util.Queue;
+import java.util.ArrayDeque;
+import java.util.PriorityQueue;
+
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -164,5 +168,48 @@ public class App {
         // To search an element in the stack, we use the search() method
         int positionOfCat = animalsStack.search("Cat");
         System.out.println("Position of Cat: " + positionOfCat);
+        // Check if Stack is empty
+        boolean animalStackEmptyResult = animalsStack.empty();
+        System.out.println("Is the stack empty: " + animalStackEmptyResult);
+    
+        System.out.println("-------------Queue--------------------");
+
+        // LinkedList implementation of Queue
+        Queue<String> animal1 = new LinkedList<>();
+        // Array implementation of Queue
+        Queue<String> animal2 = new ArrayDeque<>();
+        // Priority queue implementation of Queue
+        Queue<String> animal3 = new PriorityQueue<>();
+
+        //Create Queue using the LinkedList class
+        Queue<Integer> numbersQueue = new LinkedList<>();
+        // offer elements to the Queue
+        numbersQueue.offer(1);
+        numbersQueue.offer(2);
+        numbersQueue.offer(3);
+        System.out.println("Queue: " + numbersQueue);
+        // Access elements of the Queue
+        int accessedQueueNumber = numbersQueue.peek();
+        System.out.println("Accessed element: " + accessedQueueNumber);
+        // Remove elements from the Queue
+        int removedQueueNumber = numbersQueue.poll();
+        System.out.println("Removed element: " + removedQueueNumber);
+        System.out.println("Updated Queue: "+ numbersQueue);
+
+
+        // Create Queue using the PriorityQueue class:
+        Queue<Integer> numbersPriorityQueue = new PriorityQueue<>();
+        
+        // Offer elements to the Queue
+        numbersPriorityQueue.offer(5);
+        numbersPriorityQueue.offer(1);
+        numbersPriorityQueue.offer(2);
+        System.out.println("Queue: " + numbersPriorityQueue);
+        // Access elements of the Queue
+        int accessedPriorityQueue = numbersPriorityQueue.peek();
+        System.out.println("Accessed element: " + accessedPriorityQueue);
+        // Remove elements from the Queue
+        int removedPriorityQueue = numbersPriorityQueue.poll();
+        System.out.println("Removed Element: " + removedPriorityQueue);
     }
 }
