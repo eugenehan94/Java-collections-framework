@@ -9,7 +9,7 @@ import java.util.Stack;
 import java.util.Queue;
 import java.util.ArrayDeque;
 import java.util.PriorityQueue;
-
+import java.util.Deque;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -141,7 +141,7 @@ public class App {
 
         System.out.println("-------------Vector--------------------");
 
-        //Create Integer type stack
+        // Create Integer type stack
         Stack<Integer> stacksInteger = new Stack<>();
         // Create String type stack
         Stack<String> stacksString = new Stack<>();
@@ -171,7 +171,7 @@ public class App {
         // Check if Stack is empty
         boolean animalStackEmptyResult = animalsStack.empty();
         System.out.println("Is the stack empty: " + animalStackEmptyResult);
-    
+
         System.out.println("-------------Queue--------------------");
 
         // LinkedList implementation of Queue
@@ -181,7 +181,7 @@ public class App {
         // Priority queue implementation of Queue
         Queue<String> animal3 = new PriorityQueue<>();
 
-        //Create Queue using the LinkedList class
+        // Create Queue using the LinkedList class
         Queue<Integer> numbersQueue = new LinkedList<>();
         // offer elements to the Queue
         numbersQueue.offer(1);
@@ -194,12 +194,11 @@ public class App {
         // Remove elements from the Queue
         int removedQueueNumber = numbersQueue.poll();
         System.out.println("Removed element: " + removedQueueNumber);
-        System.out.println("Updated Queue: "+ numbersQueue);
-
+        System.out.println("Updated Queue: " + numbersQueue);
 
         // Create Queue using the PriorityQueue class:
         Queue<Integer> numbersPriorityQueue = new PriorityQueue<>();
-        
+
         // Offer elements to the Queue
         numbersPriorityQueue.offer(5);
         numbersPriorityQueue.offer(1);
@@ -211,5 +210,75 @@ public class App {
         // Remove elements from the Queue
         int removedPriorityQueue = numbersPriorityQueue.poll();
         System.out.println("Removed Element: " + removedPriorityQueue);
-    }
+        System.out.println("Updated Queue: " + numbersPriorityQueue);
+
+        System.out.println("-------------PriorityQueue--------------------");
+
+        PriorityQueue<Integer> numbersPriorityQueue2 = new PriorityQueue<>();
+
+        // Using the add() method
+        numbersPriorityQueue2.add(4);
+        numbersPriorityQueue2.add(2);
+        System.out.println("Priority Queue: " + numbersPriorityQueue2);
+        // Using the offer() method
+        numbersPriorityQueue2.offer(1);
+        System.out.println("Updated PriorityQueue: " + numbersPriorityQueue2);
+        // Using the peek() method
+        int numbersPriorityQueue2Peek = numbersPriorityQueue2.peek();
+        System.out.println("Accessed Element: " + numbersPriorityQueue2Peek);
+        // Using the remove() method
+        boolean numbersPriorityQueue2Remove = numbersPriorityQueue2.remove(2);
+        System.out.println("Is the element 2 removed? " + numbersPriorityQueue2Remove);
+        // Using the poll() method
+        int numbersPriorityQueue2Poll = numbersPriorityQueue2.poll();
+        System.out.println("Removed Element using poll(): " + numbersPriorityQueue2Poll);
+
+        numbersPriorityQueue2.add(2);
+        numbersPriorityQueue2.add(1);
+        System.out.println("PriorityQueue using iterator(): ");
+        // Using the iterator() method
+        Iterator<Integer> iterateNumbersPriorityQueue2 = numbersPriorityQueue2.iterator();
+        while (iterateNumbersPriorityQueue2.hasNext()) {
+            System.out.print(iterateNumbersPriorityQueue2.next());
+            System.out.print(", ");
+        }
+        System.out.println();
+        // Using the contains(element) method
+        boolean containsNumberPriorityQueue2 = numbersPriorityQueue2.contains(2);
+        System.out.println("Does PriorityQueue contains 2: " + containsNumberPriorityQueue2);
+        // Using the size() method
+        System.out.println("The size of PriorityQueue is: " + numbersPriorityQueue2.size());
+
+        System.out.println("-------------Deque--------------------");
+        // Array implementation of Deque
+        Deque<String> animal1Deque = new ArrayDeque<>();
+        // LinkedList implementation of Deque
+        Deque<String> animal2Deque = new LinkedList<>();
+
+        // Creating Deque using the ArrayDeque class
+        Deque<Integer> numbersDeque = new ArrayDeque<>();
+
+        // add elements to the Deque
+        numbersDeque.offer(1);
+        numbersDeque.offerLast(2);
+        numbersDeque.offerFirst(3);
+        System.out.println("Deque: " + numbersDeque);
+
+        // Access elements of the Deque
+        int firstElementDeque = numbersDeque.peekFirst();
+        System.out.println("First element of Deque: " + firstElementDeque);
+        int lastElementDeque = numbersDeque.peekLast();
+        System.out.println("Last element of Deque: " + lastElementDeque);
+        // Remove elements from the Deque
+        int removedNumber1Deque = numbersDeque.pollFirst();
+        System.out.println("Removed first element of Deque: " + removedNumber1Deque);
+        int removedNumber2Deque = numbersDeque.pollLast();
+        System.out.println("Removed last element of Deque: " + removedNumber2Deque);
+        System.out.println("Updated Deque: " + numbersDeque);
+
+        System.out.println("-------------LinkedList--------------------");
+
+        // Create Integer type linked list
+        LinkedList<Integer> integerLinkedList = new LinkedList<>();
+    }   
 }
