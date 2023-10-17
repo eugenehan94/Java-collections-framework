@@ -280,5 +280,39 @@ public class App {
 
         // Create Integer type linked list
         LinkedList<Integer> integerLinkedList = new LinkedList<>();
+        // Create String type linked list
+        LinkedList<String> stringLinkedList = new LinkedList<>();
+        
+        LinkedList<String> animalsLinkedList2 = new LinkedList<>();
+        // Add elements to Linked list
+        animalsLinkedList2.add("Dog");
+        animalsLinkedList2.add("Cat");
+        animalsLinkedList2.add("Cow");
+        System.out.println("LinkedList: " + animalsLinkedList2);
+
+        // add() method with the index parameter
+        animalsLinkedList2.add(1, "Horse");
+        System.out.println("Updated LinkedList: " + animalsLinkedList2);
+
+        LinkedList<String> languagesLinkedList = new LinkedList<>();
+        languagesLinkedList.add("Python");
+        languagesLinkedList.add("Java");
+        languagesLinkedList.add("JavaScript");
+        languagesLinkedList.add("C");
+        System.out.println("LinkedList: " + languagesLinkedList);
+        // get the element from the linked list
+        String strLinkedList = languagesLinkedList.get(1);
+        System.out.println("Element at index 1 is: " + strLinkedList);
+        // change elements at index 3
+        languagesLinkedList.set(3, "Kotlin");
+        System.out.println("Updated LinkedList: " + languagesLinkedList);
+        // remove elements from index 1
+        String strLanguagesLinkedList = languagesLinkedList.remove(1);
+        System.out.println("Removed element: " + strLanguagesLinkedList);
+
+        System.out.println("Updated LinkedList:  " + languagesLinkedList);
+
+
     }   
+
 }
