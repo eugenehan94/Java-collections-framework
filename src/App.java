@@ -282,7 +282,7 @@ public class App {
         LinkedList<Integer> integerLinkedList = new LinkedList<>();
         // Create String type linked list
         LinkedList<String> stringLinkedList = new LinkedList<>();
-        
+
         LinkedList<String> animalsLinkedList2 = new LinkedList<>();
         // Add elements to Linked list
         animalsLinkedList2.add("Dog");
@@ -309,10 +309,92 @@ public class App {
         // remove elements from index 1
         String strLanguagesLinkedList = languagesLinkedList.remove(1);
         System.out.println("Removed element: " + strLanguagesLinkedList);
-
         System.out.println("Updated LinkedList:  " + languagesLinkedList);
+        // using contains() - checks if the linkedlist contains the elements
+        boolean linkedListContains = languagesLinkedList.contains("Kotlin");
+        System.out.println("Contains element 'Java': " + linkedListContains);
+        // using indexOf() - returns the index of the first occurrance of the element
+        int linkedListIndexOf = languagesLinkedList.indexOf("JavaScript");
+        System.out.println("The index of JavaScript: " + linkedListIndexOf);
+        // using lastIndexOf() - returns the index of the last occurrance of the element
+        int lastIndexOfLinkedList = languagesLinkedList.lastIndexOf("JavaScript");
+        System.out.println("The last index of JavaScript: " + lastIndexOfLinkedList);
 
+        System.out.println("-------------LinkedList as Queue--------------------");
+        Queue<String> languagesLinkedListQueue = new LinkedList<>();
+        // add elements
+        languagesLinkedListQueue.add("Python");
+        languagesLinkedListQueue.add("Java");
+        languagesLinkedListQueue.add("C");
+        languagesLinkedListQueue.add("JavaScript");
+        System.out.println("LinkedList Queue: " + languagesLinkedListQueue);
+        // access the first element
+        String strLanguagesLinkedListQueue = languagesLinkedListQueue.peek();
+        System.out.println("Accessed element: " + strLanguagesLinkedListQueue);
+        // access and remove the first element
+        String pollLanguagesLinkedListQueue = languagesLinkedListQueue.poll();
+        System.out.println("Removed element: " + pollLanguagesLinkedListQueue);
+        System.out.println("Linkedlist after poll(): " + languagesLinkedListQueue);
+        // add element at the end
+        languagesLinkedListQueue.offer("Swift");
+        System.out.println("LinkedList after offer(): " + languagesLinkedListQueue);
 
-    }   
+        System.out.println("-------------LinkedList as Deque--------------------");
+
+        Deque<String> animalsDequeLinkedList = new LinkedList<>();
+        //add elements at the beginning
+        animalsDequeLinkedList.add("Cow");
+        System.out.println("Linkedlist: " + animalsDequeLinkedList);
+        animalsDequeLinkedList.addFirst("Dog");
+        System.out.println("Linkedlist after addFirst(): " + animalsDequeLinkedList);
+        //add elements at the end
+        animalsDequeLinkedList.addLast("Zebra");
+        System.out.println("Linkedlist after addLast(): " + animalsDequeLinkedList);
+        //remove the first element
+        animalsDequeLinkedList.removeFirst();
+        System.out.println("Linkedlist after removeFirst(): " + animalsDequeLinkedList);
+        //remove the last element
+        animalsDequeLinkedList.removeLast();
+        System.out.println("Linkedlist after removeLast(): " + animalsDequeLinkedList);
+        // iteration through linkedlist
+        animalsDequeLinkedList.add("Cat");
+        animalsDequeLinkedList.add("Dog");
+        System.out.println("Deque linkedlist: " + animalsDequeLinkedList);
+        for(String animal: animalsDequeLinkedList){
+            System.out.print(animal);
+            System.out.print(", ");
+        }
+        System.out.println();
+
+        System.out.println("-------------ArrayDeque--------------------");
+        // ArrayDeque<Type> animal = new ArrayDeque<>();
+
+        ArrayDeque<String> animalsArrayDeque = new ArrayDeque<>();
+        // using add()
+        animalsArrayDeque.add("Dog");
+        // using addFirst()
+        animalsArrayDeque.addFirst("Cat");
+        // using addLast()
+        animalsArrayDeque.addLast("Horse");
+        System.out.println("ArrayDeque: " + animalsArrayDeque);
+        ArrayDeque<String> animalsArrayDeque2 = new ArrayDeque<>();
+        // using offer()
+        animalsArrayDeque2.offer("Dog");
+        // using offerFirst()
+        animalsArrayDeque2.offerFirst("Cat");
+        // using offerLast();
+        animalsArrayDeque2.offerLast("Horse");
+        System.out.println("ArrayDeque2: " + animalsArrayDeque2);
+
+        // get the first element
+        String firstAnimalsArrayDeque = animalsArrayDeque.getFirst();
+        System.out.println("First element: " + firstAnimalsArrayDeque);
+        // get the last element
+        String lastAnimalsArrayDeque = animalsArrayDeque.getLast();
+        System.out.println("Last element: " + lastAnimalsArrayDeque);
+        // using peek()
+        String peekAnimalsArrayDeque = animalsArrayDeque.peek();
+        System.out.println("Head element: " + peekAnimalsArrayDeque);
+    }
 
 }
