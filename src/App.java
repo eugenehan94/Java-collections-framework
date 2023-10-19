@@ -342,25 +342,25 @@ public class App {
         System.out.println("-------------LinkedList as Deque--------------------");
 
         Deque<String> animalsDequeLinkedList = new LinkedList<>();
-        //add elements at the beginning
+        // add elements at the beginning
         animalsDequeLinkedList.add("Cow");
         System.out.println("Linkedlist: " + animalsDequeLinkedList);
         animalsDequeLinkedList.addFirst("Dog");
         System.out.println("Linkedlist after addFirst(): " + animalsDequeLinkedList);
-        //add elements at the end
+        // add elements at the end
         animalsDequeLinkedList.addLast("Zebra");
         System.out.println("Linkedlist after addLast(): " + animalsDequeLinkedList);
-        //remove the first element
+        // remove the first element
         animalsDequeLinkedList.removeFirst();
         System.out.println("Linkedlist after removeFirst(): " + animalsDequeLinkedList);
-        //remove the last element
+        // remove the last element
         animalsDequeLinkedList.removeLast();
         System.out.println("Linkedlist after removeLast(): " + animalsDequeLinkedList);
         // iteration through linkedlist
         animalsDequeLinkedList.add("Cat");
         animalsDequeLinkedList.add("Dog");
         System.out.println("Deque linkedlist: " + animalsDequeLinkedList);
-        for(String animal: animalsDequeLinkedList){
+        for (String animal : animalsDequeLinkedList) {
             System.out.print(animal);
             System.out.print(", ");
         }
@@ -395,6 +395,61 @@ public class App {
         // using peek()
         String peekAnimalsArrayDeque = animalsArrayDeque.peek();
         System.out.println("Head element: " + peekAnimalsArrayDeque);
+        // using peekFirst()
+        String firstElementAnimalsArrayDeque = animalsArrayDeque.peekFirst();
+        System.out.println("First element: " + firstElementAnimalsArrayDeque);
+        // using peekLast()
+        String lastElementAnimalsArrayDeque = animalsArrayDeque.peekLast();
+        System.out.println("Last element: " + lastElementAnimalsArrayDeque);
+
+        animalsArrayDeque.add("Cow");
+        System.out.println("ArrayDeque: " + animalsArrayDeque);
+        // using remove()
+        String removeAnimalsArrayDeque = animalsArrayDeque.remove();
+        System.out.println("Removed element: " + removeAnimalsArrayDeque);
+        System.out.println("New ArrayDeque: " + animalsArrayDeque);
+        // using removeFirst()
+        String firstElementRemovedAnimalsArrayDeque = animalsArrayDeque.removeFirst();
+        System.out.println("Removed first element: " + firstElementRemovedAnimalsArrayDeque);
+        // using removeLast()
+        String lastElementRemovedAnimalsArrayDeque = animalsArrayDeque.removeLast();
+        System.out.println("Removed last element: " + lastElementRemovedAnimalsArrayDeque);
+        animalsArrayDeque.clear();
+
+        animalsArrayDeque.add("Dog");
+        animalsArrayDeque.add("Cat");
+        animalsArrayDeque.add("Cow");
+        animalsArrayDeque.add("Horse");
+        System.out.println("ArrayDeque: " + animalsArrayDeque);
+        // using poll()
+        String pollAnimalsArrayDeque = animalsArrayDeque.poll();
+        System.out.println("Removed element: " + pollAnimalsArrayDeque);
+        System.out.println("New ArrayDeque: " + animalsArrayDeque);
+        // using pollFirst()
+        String pollFirstAnimalsArrayDeque = animalsArrayDeque.pollFirst();
+        System.out.println("Removed first element: " + pollFirstAnimalsArrayDeque);
+        // using pollLast()
+        String pollLastAnimalsArrayDeque = animalsArrayDeque.pollLast();
+        System.out.println("Removed last element: " + pollLastAnimalsArrayDeque);
+        animalsArrayDeque.clear();
+
+        animalsArrayDeque.add("Dog");
+        animalsArrayDeque.add("Cat");
+        animalsArrayDeque.add("Horse");
+        System.out.print("ArrayDeque: ");
+        // using iterator()
+        Iterator<String> iterateAnimalsArrayDeque = animalsArrayDeque.iterator();
+        while (iterateAnimalsArrayDeque.hasNext()) {
+            System.out.print(iterateAnimalsArrayDeque.next());
+            System.out.print(", ");
+        }
+        System.out.print("\nArrayDeque in reverse order: ");
+        // using descendingIterator()
+        Iterator<String> desIterator = animalsArrayDeque.descendingIterator();
+        while (desIterator.hasNext()) {
+            System.out.print(desIterator.next());
+            System.out.print(", ");
+        }
     }
 
 }
