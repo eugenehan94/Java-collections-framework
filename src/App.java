@@ -10,6 +10,10 @@ import java.util.Queue;
 import java.util.ArrayDeque;
 import java.util.PriorityQueue;
 import java.util.Deque;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -450,6 +454,97 @@ public class App {
             System.out.print(desIterator.next());
             System.out.print(", ");
         }
+        System.out.println();
+        System.out.println("-------------Blocking Queue--------------------");
+        // Array implementation of BlockingQueue
+        // BlockingQueue<String> animal1 = new ArrayBlockingQueue<>();
+        // LinkedList implementation of BlockingQueue
+        // BlockingQueue<String> animal2 = new LinkedBlockingQueue<>();
+
+        // Create a blocking queue using the ArrayBlockingQueue
+        BlockingQueue<Integer> numbersBlockingQueue = new ArrayBlockingQueue<>(5);
+        try {
+            // Insert element to blocking queue
+            numbersBlockingQueue.put(2);
+            numbersBlockingQueue.put(1);
+            numbersBlockingQueue.put(3);
+            System.out.println("BlockingQueue: " + numbersBlockingQueue);
+
+            // Remove elements from blocking queue
+            int removedNumberBlockingQueue = numbersBlockingQueue.take();
+            System.out.println("Removed Number: " + removedNumberBlockingQueue);
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+
+        System.out.println("-------------ArrayBlockingQueue--------------------");
+        // ArrayBlockingQueue<Type> animal = new ArrayBlockingQueue<>(int capacity);
+        // Creating String type ArrayBlockingQueue with size 5
+        // ArrayBlockingQueue<String> animals = new ArrayBlockingQueue<>(5);
+        // Creating Integer type ArrayBlockingQueue with size 5
+        // ArrayBlockingQueue<Integer> age = new ArrayBlockingQueue<>(5);
+
+        ArrayBlockingQueue<String> animalsArrayBlockingQueue = new ArrayBlockingQueue<>(5);
+        // Using add()
+        animalsArrayBlockingQueue.add("Dog");
+        animalsArrayBlockingQueue.add("Cat");
+        // Using offer()
+        animalsArrayBlockingQueue.offer("Horse");
+        System.out.println("ArrayBlockingQueue: " + animalsArrayBlockingQueue);
+        // Using peek()
+        String peekAnimalsArrayBlockingQueue = animalsArrayBlockingQueue.peek();
+        System.out.println("Accessed element: " + peekAnimalsArrayBlockingQueue);
+        // Using iterator()
+        Iterator<String> iterateAnimalsArrayBlockingQueue = animalsArrayBlockingQueue.iterator();
+        System.out.print("ArrayBlockingQueue elements: ");
+        while (iterateAnimalsArrayBlockingQueue.hasNext()) {
+            System.out.print(iterateAnimalsArrayBlockingQueue.next());
+            System.out.print(", ");
+        }
+        System.out.println();
+        // Using remove()
+        String removeAnimalsArrayBlockingQueue = animalsArrayBlockingQueue.remove();
+        System.out.println("Remove Element: ");
+        System.out.println("Using remove(): " + removeAnimalsArrayBlockingQueue);
+        // Using poll()
+        String pollAnimalsArrayBlockingQueue = animalsArrayBlockingQueue.poll();
+        System.out.println("Using poll(): " + pollAnimalsArrayBlockingQueue);
+        // Using clear()
+        animalsArrayBlockingQueue.clear();
+        System.out.println("Updated ArrayBlockingQueue: " + animalsArrayBlockingQueue);
+
+        try {
+            // Using put() - to add elements
+            animalsArrayBlockingQueue.add("Dog");
+            animalsArrayBlockingQueue.add("Cat");
+            System.out.println("ArrayBlockingQueue: " + animalsArrayBlockingQueue);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        try {
+            // Remove element with take()
+            String takeAnimalsArrayBlockingQueue = animalsArrayBlockingQueue.take();
+            System.out.println("Remove element: " + takeAnimalsArrayBlockingQueue);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        System.out.println("-------------LinkedBlockingQueue--------------------");
+        // LinkedBlockingQueue<Type> animal = new LinkedBlockingQueue<>();
+        // LinkedBlockingQueue<Type> animal = new LinkedBlockingQueue<>(int capacity);
+        // Create String type LinkedBlockingQueue with size 5
+        // LinkedBlockingQueue<String> animals = new LinkedBlockingQueue<>(5);
+        // Create Integer type LinkedBlockingQueue with size 5
+        // LinkedBlockingQueue<Integer> age = new LinkedBlockingQueue<>(5);
+
+        LinkedBlockingQueue<String> animalsLinkedBlockingQueue = new LinkedBlockingQueue<>(5);
+        // using add()
+        animalsLinkedBlockingQueue.add("Dog");
+        animalsLinkedBlockingQueue.add("Cat");
+        // using offer()
+        animalsLinkedBlockingQueue.offer("Horse");
+        System.out.println("LinkedBlockingQueue: " + animalsLinkedBlockingQueue);
     }
 
 }
