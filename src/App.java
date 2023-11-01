@@ -14,6 +14,9 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.TreeMap;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -545,6 +548,99 @@ public class App {
         // using offer()
         animalsLinkedBlockingQueue.offer("Horse");
         System.out.println("LinkedBlockingQueue: " + animalsLinkedBlockingQueue);
-    }
+        // using peek()
+        String peekAnimalsLinkedBlockingQueueElement = animalsLinkedBlockingQueue.peek();
+        System.out.println("Accessed element: " + peekAnimalsLinkedBlockingQueueElement);
+        // using iterator()
+        Iterator<String> iterateAnimalsLinkedBlockingQueue = animalsLinkedBlockingQueue.iterator();
+        System.out.print("LinkedBlockingQueue: elements: ");
+        while (iterateAnimalsLinkedBlockingQueue.hasNext()) {
+            System.out.print(iterateAnimalsLinkedBlockingQueue.next());
+            System.out.print(", ");
+        }
+        // using remove()
+        String removeAnimalsLinkedBlockingQueue = animalsLinkedBlockingQueue.remove();
+        System.out.println("Using remove(): " + removeAnimalsLinkedBlockingQueue);
+        // using poll()
+        String pollAnimalsLinkedBlockingQueue = animalsLinkedBlockingQueue.poll();
+        System.out.println("Using poll(): " + pollAnimalsLinkedBlockingQueue);
+        // using clear()
+        animalsLinkedBlockingQueue.clear();
+        System.out.println("Update LinkedBlockingQueue " + animalsLinkedBlockingQueue);
 
+        try {
+            // Add elements to animals
+            animalsArrayBlockingQueue.put("Dog");
+            animalsArrayBlockingQueue.put("Cat");
+            animalsArrayBlockingQueue.put("Horse");
+            System.out.println("LinkedBlockingQueue: " + animalsArrayBlockingQueue);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        try {
+            String takeAnimalsArrayBlockingQueue = animalsArrayBlockingQueue.take();
+            System.out.println("Removed element: " + takeAnimalsArrayBlockingQueue);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        System.out.println("-------------Map--------------------");
+        // Map implementation using HashMap
+        // Map<Key, Value> numbers = new HashMap<>();
+
+        // Creating a map using the HashMap
+        Map<String, Integer> numbersMap = new HashMap<>();
+        // insert elements to the map
+        numbersMap.put("One", 1);
+        numbersMap.put("Two", 2);
+        System.out.println("Map: " + numbersMap);
+        // access keys of the map
+        System.out.println("Keys: " + numbersMap.keySet());
+        // access values of the map
+        System.out.println("Values: " + numbersMap.values());
+        // access entries of the map
+        System.out.println("Entries: " + numbersMap.entrySet());
+        // remove Elements from the map
+        int valueRemove = numbersMap.remove("Two");
+        System.out.println("Removed value: " + valueRemove);
+
+        // create Map using TreeMap
+        Map<String, Integer> valuesMap = new TreeMap<>();
+        // insert elements to map
+        valuesMap.put("Second", 2);
+        valuesMap.put("First", 1);
+        System.out.println("Map using TreeMap: " + valuesMap);
+        // replacing the values
+        valuesMap.replace("First", 11);
+        valuesMap.replace("Second", 22);
+        System.out.println("New Map: " + valuesMap);
+        // remove elements from the Map
+        int removedMapValue = valuesMap.remove("First");
+        System.out.println("Removed value: " + removedMapValue);
+
+        System.out.println("-------------HashMap--------------------");
+        // HashMap<K, V> numbers = new HashMap<>();
+        // HashMap<String, Integer> numbers = new HashMap<>();
+
+        // create a hashmap
+        HashMap<Integer, String> languagesHashMap = new HashMap<>();
+        languagesHashMap.put(1, "Java");
+        languagesHashMap.put(2, "Python");
+        languagesHashMap.put(3, "JavaScript");
+        System.out.println("HashMap: " + languagesHashMap);
+        // get() method to get value
+        String getLanguagesHashMap = languagesHashMap.get(2);
+        System.out.println("Value at index 1: " + getLanguagesHashMap);
+        // return set view of keys
+        // using keySet()
+        System.out.println("Keys: " + languagesHashMap.keySet());
+        // return set view of values
+        // using values()
+        System.out.println("Values: " + languagesHashMap.values());
+        // return set view of key/value pairs
+        // using entrySet()
+        System.out.println("Key/Value mappings: " + languagesHashMap.entrySet());
+
+    }
 }
