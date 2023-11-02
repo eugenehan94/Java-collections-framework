@@ -5,18 +5,18 @@ import java.util.Vector;
 import java.util.Stack;
 import java.util.Iterator;
 import java.util.Comparator;
-import java.util.Stack;
 import java.util.Queue;
 import java.util.ArrayDeque;
 import java.util.PriorityQueue;
 import java.util.Deque;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.TreeMap;
+import java.util.Map.Entry;
+import java.util.WeakHashMap;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -641,6 +641,77 @@ public class App {
         // return set view of key/value pairs
         // using entrySet()
         System.out.println("Key/Value mappings: " + languagesHashMap.entrySet());
+        // change element with key 2
+        languagesHashMap.replace(2, "C++");
+        System.out.println("HashMap using replace(): " + languagesHashMap);
+        // remove element associated with key 2
+        String removeLanguagesHashMap = languagesHashMap.remove(2);
+        System.out.println("Remove value: " + removeLanguagesHashMap);
+        // iterate through keys only
+        System.out.print("Keys: ");
+        for (Integer key : languagesHashMap.keySet()) {
+            System.out.print(key);
+            System.out.print(", ");
+        }
+        // iterate through values only
+        System.out.print("\nValues: ");
+        for (String value : languagesHashMap.values()) {
+            System.out.print(value);
+            System.out.print(", ");
+        }
+        // iterate through key/value entries
+        System.out.print("\nEntries ");
+        for (Entry<Integer, String> entry : languagesHashMap.entrySet()) {
+            System.out.print(entry);
+            System.out.print(", ");
+        }
+
+        // create a treemap
+        TreeMap<String, Integer> evenNumbersTreeMap = new TreeMap<>();
+        evenNumbersTreeMap.put("Two", 2);
+        evenNumbersTreeMap.put("Four", 4);
+        System.out.println("TreeMap: " + evenNumbersTreeMap);
+        // create hashmap from the treemap
+        HashMap<String, Integer> numbersFromTreeMap = new HashMap<>(evenNumbersTreeMap);
+        numbersFromTreeMap.put("Three", 3);
+        System.out.println("HashMap: " + numbersFromTreeMap);
+
+        System.out.println("-------------LinkedHashMap--------------------");
+        // LinkedHashMap with initial capacity 8 and load factor 0.6
+        // LinkedHashMap<Key, Value> numbers = new LinkedHashMap<>(8, 0.6f);
+        System.out.println("-------------WeakHashMap--------------------");
+        // WeakHashMap creation with capacity 8 and load factor 0.6
+        // WeakHashMap<Key, Value> numbers = new WeakHashMap<>(8, 0.6);
+
+        // Creating WeakHashMap of numbers
+        WeakHashMap<String, Integer> numbersWeakHashMap = new WeakHashMap<>();
+        String two = new String("Two");
+        Integer twoValue = 2;
+        String four = new String("Four");
+        Integer fourValue = 4;
+        // Inserting elements
+        numbersWeakHashMap.put(two, twoValue);
+        numbersWeakHashMap.put(four, fourValue);
+        System.out.println("WeakHashMap: " + numbersWeakHashMap);
+        // make the reference null
+        two = null;
+        // perform garbage collection
+        System.gc();
+        System.out.println("WeakHashMap after garbage collection: " + numbersWeakHashMap);
+        numbersWeakHashMap.clear();
+        two=new String("Two");
+        numbersWeakHashMap.put(two, twoValue);
+        // using putIfAbsent()
+        numbersWeakHashMap.putIfAbsent(four, fourValue);
+        System.out.println("WeakHashMap of even numbers: " + numbersWeakHashMap);
+        // create WeakHashMap of numbers
+        WeakHashMap<String,Integer> numbers2WeakHashMap = new WeakHashMap<>();
+        String one = new String("One");
+        Integer oneValue = 1;
+        numbers2WeakHashMap.put(one, oneValue);
+        // using putAll()
+        numbers2WeakHashMap.putAll(numbersWeakHashMap);
+        System.out.println("WeakHashMap of numbers: " + numbers2WeakHashMap);
 
     }
 }
