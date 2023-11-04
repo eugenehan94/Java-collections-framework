@@ -17,6 +17,11 @@ import java.util.HashMap;
 import java.util.TreeMap;
 import java.util.Map.Entry;
 import java.util.WeakHashMap;
+import java.util.EnumMap;
+
+enum Size {
+    SMALL, MEDIUM, LARGE, EXTRALARGE
+}
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -699,19 +704,90 @@ public class App {
         System.gc();
         System.out.println("WeakHashMap after garbage collection: " + numbersWeakHashMap);
         numbersWeakHashMap.clear();
-        two=new String("Two");
+        two = new String("Two");
         numbersWeakHashMap.put(two, twoValue);
         // using putIfAbsent()
         numbersWeakHashMap.putIfAbsent(four, fourValue);
         System.out.println("WeakHashMap of even numbers: " + numbersWeakHashMap);
         // create WeakHashMap of numbers
-        WeakHashMap<String,Integer> numbers2WeakHashMap = new WeakHashMap<>();
+        WeakHashMap<String, Integer> numbers2WeakHashMap = new WeakHashMap<>();
         String one = new String("One");
         Integer oneValue = 1;
         numbers2WeakHashMap.put(one, oneValue);
         // using putAll()
         numbers2WeakHashMap.putAll(numbersWeakHashMap);
         System.out.println("WeakHashMap of numbers: " + numbers2WeakHashMap);
+        // using entrySet()
+        System.out.println("Key/Value mappings: " + numbers2WeakHashMap.entrySet());
+        // using keySet()
+        System.out.println("Keys: " + numbers2WeakHashMap.keySet());
+        // using values()
+        System.out.println("Values: " + numbers2WeakHashMap.values());
+        // using get()
+        int value2 = numbers2WeakHashMap.get("Four");
+        System.out.println("Using get(): " + value2);
+        // using getOrDefault()
+        int value2getOrDefault = numbers2WeakHashMap.getOrDefault("One", 1);
+        System.out.println("Using getOrDefault(): " + value2getOrDefault);
+        // using remove() with single parameter
+        int removeValue = numbers2WeakHashMap.remove("Four");
+        System.out.println("Removed value: " + removeValue);
+        // using remove() with two parameters
+        boolean resultRemove = numbers2WeakHashMap.remove("One", 3);
+        System.out.println("Is the entry {One=3} removed? " + resultRemove);
+        System.out.println("Updated WeakHashMap: " + numbers2WeakHashMap);
 
+        System.out.println("-------------EnumMap--------------------");
+        // enum Size { SMALL, MEDIUM, LARGE, EXTRALARGE}
+        // EnumMap<Size, Integer> sizes = new EnumMap<>(Size.class);
+
+        // Creating an EnumMap of the Size enum
+        EnumMap<Size, Integer> sizes1EnumMap = new EnumMap<>(Size.class);
+        // using the put() method
+        sizes1EnumMap.put(Size.SMALL, 28);
+        sizes1EnumMap.put(Size.MEDIUM, 32);
+        System.out.println("EnumMap1: " + sizes1EnumMap);
+
+        EnumMap<Size, Integer> sizes2EnumMap = new EnumMap<>(Size.class);
+        // using the putAll() method
+        sizes2EnumMap.putAll(sizes1EnumMap);
+        sizes2EnumMap.put(Size.LARGE, 36);
+        System.out.println("EnumMap2: " + sizes2EnumMap);
+
+        EnumMap<Size, Integer> sizesEnumMap = new EnumMap<>(Size.class);
+        sizesEnumMap.put(Size.SMALL, 28);
+        sizesEnumMap.put(Size.MEDIUM, 32);
+        sizesEnumMap.put(Size.LARGE, 36);
+        sizesEnumMap.put(Size.EXTRALARGE, 40);
+        // using the entrySet() method
+        System.out.println("Key/Value mappings: " + sizesEnumMap.entrySet());
+        // using the keySet() method
+        System.out.println("Keys: " + sizesEnumMap.keySet());
+        // using the values() method
+        System.out.println("Values: " + sizesEnumMap.values());
+        // using the get() method
+        int getSizeEnumMap = sizesEnumMap.get(Size.MEDIUM);
+        System.out.println("Value of MEDIUM: " + getSizeEnumMap);
+        // using the remove() method
+        int removeSizeEnumMap = sizesEnumMap.remove(Size.MEDIUM);
+        System.out.println("Remove value: " + removeSizeEnumMap);
+        boolean removeSizeEnumMap2 = sizesEnumMap.remove(Size.SMALL, 28);
+        System.out.println("Is the entry {SMALL=28} removed? " + removeSizeEnumMap2);
+        System.out.println("Updated EnumMap: " + sizesEnumMap);
+
+        sizesEnumMap.clear();
+        sizesEnumMap.put(Size.SMALL, 28);
+        sizesEnumMap.put(Size.MEDIUM, 32);
+        sizesEnumMap.put(Size.LARGE, 36);
+        sizesEnumMap.put(Size.EXTRALARGE, 40);
+        System.out.println("EnumMap: " + sizesEnumMap);
+
+        // using the replace() method
+        sizesEnumMap.replace(Size.MEDIUM, 30);
+        sizesEnumMap.replace(Size.LARGE, 36, 34);
+        System.out.println("EnumMap using replace(): " + sizesEnumMap);
+        // using the replaceAll() method
+        sizesEnumMap.replaceAll((key, oldValue) -> oldValue + 3);
+        System.out.println("EnumMap using replaceAll(): " + sizesEnumMap);
     }
 }
