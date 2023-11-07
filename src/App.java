@@ -18,6 +18,9 @@ import java.util.TreeMap;
 import java.util.Map.Entry;
 import java.util.WeakHashMap;
 import java.util.EnumMap;
+import java.util.SortedMap;
+import java.util.NavigableMap;
+import java.util.TreeMap;
 
 enum Size {
     SMALL, MEDIUM, LARGE, EXTRALARGE
@@ -789,5 +792,92 @@ public class App {
         // using the replaceAll() method
         sizesEnumMap.replaceAll((key, oldValue) -> oldValue + 3);
         System.out.println("EnumMap using replaceAll(): " + sizesEnumMap);
+
+        System.out.println("-------------SortedMap--------------------");
+        // SortedMap implementation by TreeMap class
+        // SortedMap<Key, Value> numbers = new TreeMap<>();
+
+        // Creating SortedMap using TreeMap
+        SortedMap<String, Integer> numbersSortedMap = new TreeMap<>();
+        // Insert elements to map
+        numbersSortedMap.put("Two", 2);
+        numbersSortedMap.put("One", 1);
+        System.out.println("SortedMap: " + numbersSortedMap);
+        // Access the first key of the map
+        System.out.println("First key: " + numbersSortedMap.firstKey());
+        // Access the last key of the map
+        System.out.println("Last key: " + numbersSortedMap.lastKey());
+        // Remove elements from the map
+        int removeNumbersSortedMap = numbersSortedMap.remove("One");
+        System.out.println("Removed value: " + removeNumbersSortedMap);
+
+        System.out.println("-------------NavigableMap--------------------");
+        // NavigableMap implementation by TreeMap class
+        // NavigableMap<Key, Value> numbers = new TreeMap<>();
+
+        // Creating NavigableMap using TreeMap
+        NavigableMap<String, Integer> numbersNavigableMap = new TreeMap<>();
+        // Insert elements to map
+        numbersNavigableMap.put("Two", 2);
+        numbersNavigableMap.put("One", 1);
+        numbersNavigableMap.put("Three", 3);
+        System.out.println("NavigableMap: " + numbersNavigableMap);
+        // Access the first entry of the map
+        System.out.println("First entry: " + numbersNavigableMap.firstEntry());
+        // Access the last entry of the map
+        System.out.println("Last entry: " + numbersNavigableMap.lastEntry());
+        // Remove the first entry from the map
+        System.out.println("Removed first entry: " + numbersNavigableMap.pollFirstEntry());
+        // Remove the last entry from the map
+        System.out.println("Remove last entry: " + numbersNavigableMap.pollLastEntry());
+
+        System.out.println("-------------TreeMap--------------------");
+        // TreeMap<Key, Value> numbers = new TreeMap<>();
+
+        // Creating TreeMap of even numbers
+        TreeMap<String, Integer> evenNumbersTreeMap1 = new TreeMap<>();
+        // Using put()
+        evenNumbersTreeMap1.put("Two", 2);
+        evenNumbersTreeMap1.put("Four", 4);
+        // Using putIfAbsent()
+        evenNumbersTreeMap1.putIfAbsent("Six", 6);
+        System.out.println("TreeMap of even numbers: " + evenNumbersTreeMap1);
+        // Creating TreeMap of numbers
+        TreeMap<String, Integer> numbersTreeMap = new TreeMap<>();
+        numbersTreeMap.put("One", 1);
+        // Using putAll()
+        numbersTreeMap.putAll(evenNumbersTreeMap1);
+        System.out.print("TreeMap of numbers: " + numbersTreeMap);
+        numbersTreeMap.clear();
+        numbersTreeMap.put("One", 1);
+        numbersTreeMap.put("Two", 2);
+        numbersTreeMap.put("Three", 3);
+        // Using entrySet()
+        System.out.println("Key/Value mappings: " + numbersTreeMap.entrySet());
+        // Using keySet()
+        System.out.println("Keys: " + numbersTreeMap.keySet());
+        // Using values()
+        System.out.println("Values: " + numbersTreeMap.values());
+        numbersTreeMap.clear();
+        numbersTreeMap.put("One", 1);
+        numbersTreeMap.put("Two", 2);
+        numbersTreeMap.put("Three", 3);
+        System.out.println("TreeMap: " + numbersTreeMap );
+        // Using get()
+        int getNumbersTreeMap = numbersTreeMap.get("Three");
+        System.out.println("Using get(): " + getNumbersTreeMap);
+        // Using getOrDefault()
+        int getOrDefaultNumbersTreeMap = numbersTreeMap.getOrDefault("Five", 5);
+        System.out.println("Using getOrDefault(): " + getOrDefaultNumbersTreeMap);
+        System.out.println("TreeMap: " + numbersTreeMap);
+        // Remove method with single parameters
+        int removeNumbersTreeMap = numbersTreeMap.remove("Two");
+        System.out.println("Remove value: " + removeNumbersTreeMap);
+        // Remove method with two parameters
+        boolean removeNumbersTreeMap1 = numbersTreeMap.remove("Three", 3);
+        System.out.println("Is the entry {Three = 3} removed? : " + removeNumbersTreeMap1);
+        System.out.println("Updated TreeMap: " + numbersTreeMap);
+
+
     }
 }
